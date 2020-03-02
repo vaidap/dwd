@@ -1,3 +1,10 @@
+// initialise variables for sound
+import processing.sound.*;
+SinOsc sine;
+SinOsc sine_bass;
+float freq = 100;
+
+// initialise variables for pulsating circle
 float radius = 400.0;
 float pulse_speed = 5;
 float pulse_scale = 2;
@@ -12,6 +19,10 @@ color inter_color = lerpColor(from, to, lerp_step);
 
 void setup() {
   size(1400, 800);
+
+  // Create sine oscillator
+  sine = new SinOsc(this);
+  sine.play();
 }
 
 void draw() {
@@ -38,11 +49,15 @@ void draw() {
     inter_color = lerpColor(inter_color, from, lerp_step);
   }
 
-  // redraw pulsing circle
+  // redraw pulsating circle
   background(0);
-  strokeWeight(10);
+  strokeWeight(15);
   //stroke(pulse_color);
   stroke(inter_color);
   fill(inter_color, 40);
   ellipse(700, 400, radius, radius);
+  
+  // update sound
+  freq = freq - pulse_scale * sin( frameCount * pulse_speed / 60 );
+  sine.freq(freq);
 }
