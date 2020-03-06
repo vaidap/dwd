@@ -17,4 +17,5 @@ void draw()
 void serialEvent (Serial get)
 {
   background_color = float(get.readStringUntil('\n'));
+  println(background_color);
 }
