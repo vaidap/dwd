@@ -75,7 +75,7 @@ var hihat_2_filter;
 
 // wave vis
 var analyzer;
-var numSamples = 512;// original 1024
+var numSamples = 1024;
 var samples = [];
 var transp_color;
 
@@ -116,6 +116,9 @@ var rect_color_3 = 254;
 var matching = 0;
 var pan = 0;
 
+// start/stop of prototype
+var playing = 0;
+
 function preload(){
   kick_1 = loadSound('assets/kick_1.wav');
   kick_2 = loadSound('assets/kick_2.wav');
@@ -126,7 +129,9 @@ function preload(){
 }
 
 function setup() {
-  createCanvas(600, 600); 
+  var canvas = createCanvas(600, 600); 
+  canvas.parent('sketch-holder');
+
   background(100);
   
   // create knobs
@@ -281,6 +286,18 @@ function draw() {
     vertex(x, y + 150); // was height/2
   }
   endShape();
+
+  // visually separating the users
+  fill(30);
+  stroke(255);
+  strokeWeight(2);
+  rect(50,250,500,150);
+  rect(50,420,500,150);
+  
+  strokeWeight(5);
+  textSize(28);
+  text('User 1', 60, 260);
+  text('User 2', 60, 430);
   
   // reset pen settings
   fill(0);
@@ -312,7 +329,16 @@ function draw() {
   fill(0);
   textSize(32);
   text('>', 510, 45);
+
+  // start button
+  fill(0, 255, 0);
+  rect(550,20,40,30);
+  fill(0);
+  strokeWeight(1);
+  textSize(12);
+  text('START', 570, 40);
   
+  // question styling setup
   fill(255);
   textSize(18);
   textAlign(LEFT);

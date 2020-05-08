@@ -2,13 +2,14 @@
 <html lang="en">
 
 <head>
+  <title>Inti · Mate</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="style.css">
   <script src="p5.js"></script>
   <script src="p5.sound.min.js"></script>
   <script language="javascript" type="text/javascript" src="KnobMakerC.js"></script>
-  <link rel="stylesheet" type="text/css" href="style.css">
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inti · Mate</title>
+  <script src="sketch.js"></script>
 
   <style type="text/css">
 
@@ -33,7 +34,7 @@
       text-align: center;
     }
 
-    .image-container {
+    .container-large {
       margin: 0 auto;
       max-width: 1200px;
       text-align: center;     
@@ -57,27 +58,40 @@
     }
 
     .category {
-      min-height: 200px;
-      margin: 60px;
-      padding: 40px;
+      max-width: 280px;
+      margin: 10px;
+      padding: 25px;
       border: 3px dashed black;
       border-radius: 20px;
+/*      display: inline-block;*/
+      flex: 1;
     }
 
     .category img {
-      max-width: 200px;
+      max-width: 120px;
       display: block;
       margin: 10px auto;
-      margin-bottom: 40px;
+      margin-bottom: 20px;
     }
 
     .category p {
       margin: 0px;
       display: inline-block;
+      font-size: 16px;
     }
 
     .bolded {
       font-weight: bold;
+    }
+
+    .flex {
+      display: flex;
+      margin: auto;
+    }
+
+    .centered {
+      display: flex;
+      margin: auto;
     }
 
   </style>
@@ -89,34 +103,43 @@
     <h2>Introduction</h2>
     <p>This website is a complement to the Design with Data report. It summarises the five components of intimacy, and presents a prototype of the audiovisual interactions of the physical exhibit.</p>
   </div>
-  <div class="container">
+  <div class="container-large">
     <h2>Summary of components for intimacy</h2>
-    <div class="category">
-      <p>
-      <img src="icons/commitment.svg" alt="">
-      <p><span class="bolded">Commitment:</span> the desire to permanently remain with the partner, which is viewed as the foundation that provides opportunities for the other intimacy dimensions to develop</p>
+    <div class="flex">
+      <div class="centered">
+        <div class="category">
+          <img src="icons/commitment.svg" alt="">
+          <p><span class="bolded">Commitment:</span> the desire to permanently remain with the partner, which is viewed as the foundation that provides opportunities for the other intimacy dimensions to develop</p>
+        </div>
+        <div class="category">
+          <img src="icons/cognitive.svg" alt="">
+          <p><span class="bolded">Cognitive Closeness:</span> the depth of awareness individuals have of their partner's cognitive world and the exchanges of cognitions they share (e.g., values, goals, and other information)</p>
+        </div>
+        <div class="category">
+          <img src="icons/affective.svg" alt="">
+          <p><span class="bolded">Affective Closeness:</span> refers to the depth of awareness individuals have about their partner's emotional world and the exchanges of emotions they share, (e.g., feelings of caring and compassion)</p>
+        </div>
+      </div>
     </div>
-    <div class="category">
-      <img src="icons/cognitive.svg" alt="">
-      <p><span class="bolded">Cognitive Closeness:</span> the depth of awareness individuals have of their partner's cognitive world and the exchanges of cognitions they share (e.g., values, goals, and other information)</p>
+    <div class="flex">
+      <div class="centered">
+        <div class="category">
+          <img src="icons/physical.svg" alt="">
+          <p><span class="bolded">Physical closeness:</span> refers to the extent of shared physical encounters (ranging from proximity to sexuality) as well as to the physiological arousal state experienced toward the partner at each level of physical encounter</p>
+        </div>
+        <div class="category">
+          <img src="icons/mutuality.svg" alt="">
+          <p><span class="bolded">Mutuality:</span> An exchange or mutual interaction (characterizing intimacy as a process that occurs between individuals)</p>
+        </div>
+      </div>
     </div>
-    <div class="category">
-      <img src="icons/affective.svg" alt="">
-      <p><span class="bolded">Affective Closeness:</span> refers to the depth of awareness individuals have about their partner's emotional world and the exchanges of emotions they share, (e.g., feelings of caring and compassion)</p>
-    </div>
-    <div class="category">
-      <img src="icons/physical.svg" alt="">
-      <p><span class="bolded">Physical closeness:</span> refers to the extent of shared physical encounters (ranging from proximity to sexuality) as well as to the physiological arousal state experienced toward the partner at each level of physical encounter</p>
-    </div>
-    <div class="category">
-      <img src="icons/mutuality.svg" alt="">
-      <p><span class="bolded">Mutuality:</span> An exchange or mutual interaction (characterizing intimacy as a process that occurs between individuals)</p>
-    </div>
-    </p>
+  </div>
+
+  <div class="container">
     <h2>Project video</h2>
     <p>[insert here]</p>
   </div>
-<!--   <div class="image-container">
+<!--   <div class="container-large">
     <img src="image.png" alt="">
   </div> -->
   <div class="container">
@@ -127,14 +150,17 @@
     <li>Click and drag your mouse up or down to change the value of a knob</li>
     <li>Use the left and right buttons to navigate between questions</li>
     <li>The first three knobs affect the audio, the other two affect the visuals; the audio also affects the visuals by itself</li>
-    <li>If the answers of the two people match, the visualisation is more colourful, the line visualised is thicker, and the audio blends together</li>
-    <li>If the answers of the two people do not match, the visualisation is darker, the line is thinner, and the audio pans on the left/right to show the distance between their answers.</li>
   </ul>
     </p>
-    <p>The prototype uses the <a href="http://codeforartists.com/RotatingKnobMaker/">Rotating Knobs library</a> by Miles Decoster, and the <a href="https://therewasaguy.github.io/p5-music-viz/">Time Domain Oscilloscope</a> by Jason Sigal.
+     <p>The prototype uses the <a href="http://codeforartists.com/RotatingKnobMaker/">Rotating Knobs library</a> by Miles Decoster, and the <a href="https://therewasaguy.github.io/p5-music-viz/">Time Domain Oscilloscope</a> by Jason Sigal.</p>
+
+    <div id="sketch-holder"></div>
+
+    <h2>Matching mechanic</h2>
+    <p>
+      The prototype starts in a state where both people's answers are similar; they are considered compatible. This is reflected in the audiovisual output through having a more colourful visualisation with a thicker oscilloscope line, and the various sound effects sound good together. If the answers of the two people do not match, they are considered incompatible. The visualisation is darker, the line is thinner, and the audio pans on the left/right and the sounds conflict with each other, to show the distance between their answers.</li>
     </p>
 <!--     <iframe style="width: 600px; height: 600px; overflow: hidden;" scrolling="no" frameborder="0" src="https://editor.p5js.org/drift3r/embed/xbUmuvpJv"></iframe> -->
-  <script src="sketch.js"></script>
   </div>
 </body>
 
