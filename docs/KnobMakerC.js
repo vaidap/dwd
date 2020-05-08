@@ -106,11 +106,8 @@ function MakeKnobC(knobColor, diameter, locx, locy, lowNum, hiNum, defaultNum, n
     this.knobValue=map(this.rotateMe, -280, 0, hiNum, lowNum);
     textSize(this.textPt);
     fill(this.textColor);
-    text(""+ nfc(this.knobValue, numPlaces), this.pos.x, this.pos.y+this.radius/2+this.textPt*1.5); 
-    text(this.label, this.pos.x, this.pos.y+this.radius/2+this.textPt*2.8);
-    
-    // without label text, remove first print and replace second with:
-    // text(this.label, this.pos.x, this.pos.y+this.radius/2+this.textPt*2.8-20);
+    // text(""+ nfc(this.knobValue, numPlaces), this.pos.x, this.pos.y+this.radius/2+this.textPt*1.5);
+    text(this.label, this.pos.x, this.pos.y+this.radius/2+this.textPt*2.8-20);
   
     if (this.mouseOver || this.isClickedOn) { pointerCursor = true; }
   }; // end update
