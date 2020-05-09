@@ -149,12 +149,12 @@ function setup() {
   p2_5_knob = new MakeKnobC("green", 80, 500, 470, 0, 127, 127, 0,"Physical", [0,200,200], 18);
   
   // start sound and init pan
-  kick_1.loop();
-  kick_2.loop();
-  clap_1.loop();
-  clap_2.loop();
-  hihat_1.loop();
-  hihat_2.loop();
+  // kick_1.loop();
+  // kick_2.loop();
+  // clap_1.loop();
+  // clap_2.loop();
+  // hihat_1.loop();
+  // hihat_2.loop();
   
   kick_1.pan(-0.7);
   kick_2.pan(0.7);
@@ -331,12 +331,17 @@ function draw() {
   text('>', 510, 45);
 
   // start button
-  fill(0, 255, 0);
+  if (playing == 0) {
+    fill(0, 255, 0);
+  }
+  else {
+    fill(255, 0, 0);
+  }
   rect(550,20,40,30);
   fill(0);
   strokeWeight(1);
-  textSize(12);
-  text('START', 570, 40);
+  textSize(10);
+  text('SOUND', 570, 40);
   
   // question styling setup
   fill(255);
@@ -610,6 +615,29 @@ function mousePressed() {
       
     }
     
+  }
+
+  // start/stop button logic
+  else if ( mouseX > 550 && mouseX < 590 && mouseY > 20 && mouseY < 50) {
+    playing = !playing;
+    
+    if (playing == 0) {
+      kick_1.pause();
+      kick_2.pause();
+      clap_1.pause();
+      clap_2.pause();
+      hihat_1.pause();
+      hihat_2.pause();
+    }
+    
+    else {
+      kick_1.loop();
+      kick_2.loop();
+      clap_1.loop();
+      clap_2.loop();
+      hihat_1.loop();
+      hihat_2.loop();
+    }
   }
 
 }
