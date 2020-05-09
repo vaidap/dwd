@@ -399,12 +399,12 @@ function draw() {
     color_p1_q1 = p1_4_knob.knobValue;
     color_p2_q1 = p2_4_knob.knobValue;
     color_1 = color_p1_q1 + color_p2_q1;
-    line_color = color(color_1, color_2, color_3, 255 - matching *17);
+    line_color = color(color_1, color_2, color_3, 255 - matching *14);
     
     rect_color_p1_q1 = p1_5_knob.knobValue;
     rect_color_p2_q1 = p2_5_knob.knobValue;
     rect_color_1 = rect_color_p1_q1 + rect_color_p2_q1;
-    rect_color = color(rect_color_1, rect_color_2, rect_color_3, 255 - matching *17); 
+    rect_color = color(rect_color_1, rect_color_2, rect_color_3, 255 - matching *14);
     
   }
   else if (question == 2) {
